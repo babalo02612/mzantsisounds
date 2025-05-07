@@ -1,0 +1,16 @@
+<div class="song-card">
+  <p><strong>Title:</strong> Soul Deep</p>
+  <audio controls>
+    <source src="uploads/soul_deep.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+  <button onclick="addToPlaylist('soul_deep.mp3')">Add to Playlist</button>
+</div>
+<html><div id="notification" class="notification hidden">Notification</div>
+</html>
+<div class="ad-banner">
+    <p>🔥 Upgrade to Premium for no ads!</p>
+    <a href="subscribe.php" class="btn">Subscribe</a>
+  </div>
+  <input type="text" id="search" placeholder="Search songs..." oninput="liveSearch(this.value)" />
+<div id="suggestions"></div>

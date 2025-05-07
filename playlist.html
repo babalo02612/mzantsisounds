@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Playlists - mZantsi.sOunds</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>mZantsi.sOunds</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="profile.html">Profile</a>
+    </nav>
+  </header>
+  <main>
+    <section>
+      <h2>Your Playlists</h2>
+      <form id="createPlaylistForm">
+        <input type="text" id="playlistName" placeholder="New Playlist Name" required />
+        <button type="submit">Create</button>
+      </form>
+      <div id="playlistContainer">
+        <!-- Dynamic playlists will go here -->
+      </div>
+    </section>
+  </main>
+  <script>
+    document.getElementById('createPlaylistForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('playlistName').value;
+      const container = document.getElementById('playlistContainer');
+      const div = document.createElement('div');
+      div.textContent = name;
+      div.classList.add('playlist-card');
+      container.appendChild(div);
+      document.getElementById('playlistName').value = '';
+    });
+  </script>
+</body>
+</html>
+// Get and display playlists
+async function loadPlaylists() {
+  const user = auth.currentUser;
+  if (user) {
+    const querySnapshot = await db.collection('playlists').where('userId', '==', user.uid).get();
+    const playlistContainer = document.getElementById('playlistContainer');
+    querySnapshot.forEach((doc) => {
+      const playlist = doc.data();
+      const div = document.createElement('div');
+      div.classList.add('playlist-card');
+      div.textContent = playlist.name;
+      playlistContainer.appendChild(div);
+    });
+  }
+}
+
+loadPlaylists(); // Load playlists on page load

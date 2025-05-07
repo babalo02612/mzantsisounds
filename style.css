@@ -1,0 +1,173 @@
+/* style.css - Spotify style */
+body {
+    margin: 0;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: #121212;
+    color: #fff;
+    overflow-x: hidden;
+  }
+  
+  header {
+    background-color: #000;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    border-bottom: 1px solid #1db954;
+    animation: slideDown 0.5s ease-out;
+  }
+  
+  header h1 {
+    font-size: 2rem;
+    margin: 0;
+    color: #1db954;
+  }
+  
+  header input[type="text"] {
+    padding: 10px;
+    border: none;
+    border-radius: 500px;
+    width: 300px;
+    font-size: 1rem;
+    margin: 10px;
+    background-color: #282828;
+    color: #fff;
+    transition: all 0.3s ease;
+  }
+  
+  header input[type="text"]:focus {
+    outline: none;
+    width: 350px;
+    box-shadow: 0 0 5px #1db954;
+  }
+  
+  nav a {
+    color: #fff;
+    margin-left: 15px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+  }
+  
+  nav a:hover {
+    color: #1db954;
+  }
+  
+  main {
+    padding: 30px 20px;
+    animation: fadeIn 1s ease-in;
+  }
+  
+  section {
+    margin-bottom: 40px;
+  }
+  
+  #genres button {
+    background-color: #282828;
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    margin: 6px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+  
+  #genres button:hover {
+    background-color: #1db954;
+    color: #000;
+    transform: scale(1.05);
+  }
+  
+  section h2 {
+    font-size: 1.5rem;
+    border-bottom: 2px solid #1db954;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+  }
+  
+  #recommendedSongs div,
+  #latestSongs div,
+  #results div {
+    background-color: #181818;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    animation: fadeIn 1s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  audio {
+    margin-left: 20px;
+    width: 250px;
+    background-color: #1db954;
+    border-radius: 5px;
+  }
+  
+  @keyframes slideDown {
+    from {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Mobile responsive */
+  @media (max-width: 768px) {
+    header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    header input[type="text"] {
+      width: 100%;
+      margin: 10px 0;
+    }
+  
+    nav a {
+      margin: 10px 10px 0 0;
+    }
+  
+    audio {
+      width: 100%;
+      margin-top: 10px;
+    }
+  
+    #recommendedSongs div,
+    #latestSongs div,
+    #results div {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+  css
+  body.light-mode {
+    background-color: #f4f4f4;
+    color: #222;
+  }
+  
+  body.light-mode header,
+  body.light-mode section {
+    background-color: #fff;
+    color: #222;
+  }
+  

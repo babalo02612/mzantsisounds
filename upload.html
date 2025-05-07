@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Upload Music - mZantsi.sOunds</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>mZantsi.sOunds</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="upload.html">Upload</a>
+      <a href="login.html">Login</a>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>Upload Your Music</h2>
+      <form id="uploadForm">
+        <div style="margin-bottom: 15px;">
+          <label for="songTitle">Song Title:</label><br />
+          <input type="text" id="songTitle" name="songTitle" required style="width: 100%; padding: 10px; background-color: #282828; color: white; border: none; border-radius: 5px;">
+        </div>
+        <div style="margin-bottom: 15px;">
+          <label for="artistName">Artist Name:</label><br />
+          <input type="text" id="artistName" name="artistName" required style="width: 100%; padding: 10px; background-color: #282828; color: white; border: none; border-radius: 5px;">
+        </div>
+        <div style="margin-bottom: 15px;">
+          <label for="genre">Genre:</label><br />
+          <select id="genre" name="genre" required style="width: 100%; padding: 10px; background-color: #282828; color: white; border: none; border-radius: 5px;">
+            <option value="">Select Genre</option>
+            <option value="soul">Soul</option>
+            <option value="hiphop">Hip Hop</option>
+            <option value="jazz">Jazz</option>
+            <option value="house">House</option>
+            <option value="gospel">Gospel</option>
+            <option value="kwaito">Kwaito</option>
+            <option value="amapiano">Amapiano</option>
+            <option value="pop">Pop</option>
+            <option value="rnb">R&B</option>
+            <option value="rock">Rock</option>
+          </select>
+        </div>
+        <div style="margin-bottom: 15px;">
+          <label for="musicFile">Upload MP3:</label><br />
+          <input type="file" id="musicFile" name="musicFile" accept="audio/mp3" required style="color: white;">
+        </div>
+        <button type="submit" style="background-color: #1db954; color: black; padding: 10px 20px; border: none; border-radius: 30px; font-weight: bold; cursor: pointer;">Upload</button>
+      </form>
+    </section>
+  </main>
+
+  <script>
+    document.getElementById('uploadForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      alert('Music uploaded successfully (this is just a front-end simulation).');
+    });
+  </script>
+</body>
+</html>
