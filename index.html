@@ -1,0 +1,157 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <button id="toggleMode">🌙</button><header>
+    <div class="logo">
+  
+    </div>
+    <!-- other header content -->
+  </header>
+  
+
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>mZantsi.sOunds</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-storage.js"></script>
+  <script defer src="firebase.js"></script>
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header>
+    <h1>mZantsi.sOunds</h1>
+    <input type="text" id="search" placeholder="Search songs..." oninput="searchSongs(this.value)">
+    <nav>
+      <a href="login.html">Login</a>
+      <a href="signup.html">Sign Up</a>
+      <a href="profile.html">Profile</a>
+      <a href="upload.html">Upload</a>
+    </nav>
+  </header>
+  <main>
+    <section id="genres">
+      <button onclick="goToGenre('hiphop')">Hip Hop</button>
+      <button onclick="goToGenre('soul')">Soul</button>
+      <button onclick="goToGenre('jazz')">Jazz</button>
+      <button onclick="goToGenre('deep house')">deep house</button>
+      <button onclick="goToGenre('spaza')">spaza</button>
+      <button onclick="goToGenre('maskandi')">maskandi</button>
+      <button onclick="goToGenre('reggae')">Reggae</button>
+      <button onclick="goToGenre('Gqom')">Gqom</button>
+      <button onclick="goToGenre('gospel')">gospel</button>
+      <button onclick="goToGenre('amapiano')">amapiano</button>
+    </section>
+    
+    <section id="recommendations">
+      <h2>Recommended for You</h2>
+      <div id="recommendedSongs"></div>
+    </section>
+
+    <section id="newReleases">
+      <h2>New Releases</h2>
+      <div id="latestSongs"></div>
+    </section>
+
+    <section id="results"></section>
+  </main>
+</body>
+</html>
+<audio controls>
+  <source src="YOUR_FIREBASE_STORAGE_URL" type="audio/mp3" />
+</audio>
+
+<script s
+
+js
+async function loadSongs() {
+  const querySnapshot = await db.collection('songs').get();
+  const songContainer = document.getElementById('songList');
+  songContainer.innerHTML = '';
+
+  querySnapshot.forEach((doc) => {
+    const song = doc.data();
+    const div = document.createElement('div');
+    div.classList.add('song-item');
+    div.innerHTML = `
+      <h3>${song.title}</h3>
+      <p>Artist: ${song.artist}</p>
+      <p>Genre: ${song.genre}</p>
+    `;
+    songContainer.appendChild(div);
+  }
+
+loadSongs(); // Load songs when the page loads
+// Fetch and display recommendations
+function displayRecommendations() {
+  const recommendedSongs = [
+    { title: 'Song 1', artist: 'Artist 1', genre: 'Hip-hop' },
+    { title: 'Song 2', artist: 'Artist 2', genre: 'Soul' },
+    // Add more songs...
+  ];
+
+  const recommendedContainer = document.getElementById('recommendedSongs');
+  recommendedSongs.forEach(song => {
+    const div = document.createElement('div');
+    div.textContent = `${song.title} - ${song.artist}`;
+    recommendedContainer.appendChild(div);
+  });
+}
+
+displayRecommendations(); // Display recommendations
+!-- about.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About - mZantsi.sOunds</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>mZantsi.sOunds</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="upload.html">Upload</a>
+      <a href="login.html">Login</a>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>About Us</h2>
+      <p>
+        <strong>mZantsi.sOunds</strong> is a South African music streaming platform built with love for local and global music lovers. 
+        Our mission is to connect fans with their favorite genres, artists, and undiscovered sounds. 
+        Whether you're into Hip Hop, Soul, Gqom, House, or Afro-Pop — we’ve got something for you.
+      </p>
+      <p>
+        Stream your favorite songs, explore curated playlists, discover new releases, or upload your own tracks. 
+        We're all about empowering artists and creating a smooth, immersive listening experience for everyone.
+      </p>
+    </section>
+
+    <section>
+      <h2>Features</h2>
+      <ul>
+        <li>🎧 Stream music by genre or search by song title</li>
+        <li>🚀 Explore new releases and recommendations</li>
+        <li>📤 Upload your own tracks and share them with the world</li>
+        <li>👤 Create playlists and manage your music profile</li>
+        <li>🔐 Secure user authentication with Firebase</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Contact</h2>
+      <p>Want to reach us? Email: <a href="iviwengqengqeza86@gmail.com">info@mzantsisounds.com</a></p>
+    </section>
+  </main>
+</body>
+</html>
